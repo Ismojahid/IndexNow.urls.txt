@@ -1,0 +1,31 @@
+import requests
+import json
+
+# --- إعدادات موقعك ---
+host = "www.elmassmoudicourses0.com"       
+key = "14e1bd15c75143bbb8d529c4d5e6d84a.txt"    
+
+# --- الروابط التي تريد إرسالها ---
+urls = [
+    "https://www.elmassmoudicourses0.com/2025/08/10.html",
+    "https://www.elmassmoudicourses0.com/2025/08/microlearning.html",
+    "https://www.elmassmoudicourses0.com/2025/07/blog-post_21.html"
+]
+
+# --- تجهيز البيانات للإرسال ---
+data = {
+    "host": host,
+    "key": key,
+    "urlList": urls
+}
+
+# --- إرسال الطلب إلى Bing IndexNow ---
+response = requests.post(
+    "https://www.bing.com/indexnow",
+    headers={"Content-Type": "application/json; charset=utf-8"},
+    data=json.dumps(data)
+)
+
+# --- طباعة النتيجة ---
+print("Status Code:", response.status_code)
+print("Response:", response.text)
